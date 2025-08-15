@@ -1,9 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import VideoCall from "./components/VideoCall";
 import Chat from "./components/Chat";
 import Controls from "./components/Controls";
 import UserList from "./components/UserList";
-import type { User, Message } from "./types/types";
 import useWebRTC from "./hooks/useWebRTC";
 
 export default function App() {
@@ -17,9 +16,6 @@ export default function App() {
     isCallActive,
     callId,
   } = useWebRTC();
-  const [messages, setMessages] = useState<Message[]>([]);
-  const [users, setUsers] = useState<User[]>([]);
-  const [currentUser, setCurrentUser] = useState<User | null>(null);
 
   useEffect(() => {
     initializeCall();
@@ -48,15 +44,15 @@ export default function App() {
         {/* Боковая панель с чатом и пользователями */}
         <div className="w-80 bg-white border-l flex flex-col">
           <UserList
-            users={users}
-            onUserSelect={(user) => {
+            users={[]}
+            onUserSelect={(_user) => {
               /* ToDo: Initiate call with user */
             }}
           />
 
           <Chat
-            messages={messages}
-            onSendMessage={(message) => {
+            messages={[]}
+            onSendMessage={(_message) => {
               /* ToDo: Send message logic */
             }}
           />

@@ -103,7 +103,7 @@ export default function useWebRTC() {
     }
   };
 
-  const startCall = async (userId: string = "Guest") => {
+  const startCall = async () => {
     if (!peerConnection) return;
 
     try {
